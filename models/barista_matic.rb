@@ -92,4 +92,8 @@ class BaristaMatic
       self.inventory[ingredient_name] = 10
     end
   end
-end
+
+  def out_of_stock(drink_num)
+      return "Out of Stock: #{drink_recipe(drink_num).name} "
+    end
+  end
