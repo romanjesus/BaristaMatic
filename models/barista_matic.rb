@@ -1,3 +1,5 @@
+require_relative "../models/coffee"
+
 class BaristaMatic
   attr_accessor :inventory, :menu
   def initialize
@@ -6,7 +8,30 @@ class BaristaMatic
   end
 
   def make_drink(order_num)
-    #code
+    index_order = order_num - 1
+    response = ""
+
+    if index_order == 4
+      order = Coffee.new
+      response = "Dispensing #{self.menu[index_order].keys[0]}"
+    else
+      response = "Invalid selection: #{order_num}"
+    end
+    response
+  end
+
+  def check_inventory(drink)
+    possible = false
+
+    drink.ingredients.each do |ingredient_name, quantity|
+      if self.inventory[ingredient_name] - quantity >= 0
+        possible = true
+      else
+        possible = false
+        break
+      end
+    end
+    possible
   end
 
 end
