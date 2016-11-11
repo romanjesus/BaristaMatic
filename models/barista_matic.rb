@@ -46,8 +46,8 @@ class BaristaMatic
 
   def check_inventory(drink_num)
     possible = false
-
-    drink_num.ingredients.each do |ingredient_name, quantity|
+    
+    drink_recipe(drink_num).ingredients.each do |ingredient_name, quantity|
       if self.inventory[ingredient_name] - quantity >= 0
         possible = true
       else

@@ -29,9 +29,8 @@ describe BaristaMatic do
 
     it "Returns false if not enough ingredients" do
       barista_matic.inventory["Coffee"] = 0
-      coffee = Coffee.new
-
-      expect(barista_matic.check_inventory(coffee)).to eq (false)
+      
+      expect(barista_matic.check_inventory(5)).to eq (false)
 
     end
 
