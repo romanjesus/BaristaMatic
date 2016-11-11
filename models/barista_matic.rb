@@ -1,4 +1,4 @@
-Dir["../models/*.rb"].each {|file| require file }
+Dir["./models/*.rb"].each {|file| require file }
 
 class BaristaMatic
   attr_accessor :inventory, :menu
@@ -37,7 +37,7 @@ class BaristaMatic
     elsif drink_num == 6
       return DecafCoffee.new
     else
-      return response = "Invalid selection: #{order_num}"
+      return "Invalid selection: #{drink_num}"
     end
   end
 
@@ -74,7 +74,7 @@ class BaristaMatic
       menu_string += "#{drink_num}, #{drink.keys[0]},#{drink.values[0]}, #{check_inventory(drink_num)}\n"
       drink_num += 1
     end
-    
+
     menu_string
   end
 
@@ -85,6 +85,6 @@ class BaristaMatic
       self.inventory[ingredient_name] = (self.inventory[ingredient_name] - quantity)
     end
 
-    return "Dispensing #{drink.name}"
+    return "Dispensing: #{drink.name}"
   end
 end

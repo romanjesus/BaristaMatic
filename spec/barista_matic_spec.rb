@@ -1,5 +1,4 @@
 require_relative "../models/barista_matic"
-require_relative "../models/coffee"
 
 describe BaristaMatic do
   let(:barista_matic) {BaristaMatic.new}
@@ -48,6 +47,12 @@ describe BaristaMatic do
     it "prints menu as a string" do
       barista_matic.print_menu
       expect(barista_matic.print_menu).to be_instance_of(String)
+    end
+  end
+
+  describe "Can successfully make drinks and subtract from inventory" do
+    it "Can dispense a drink order" do
+      expect(barista_matic.make_drink(5)).to eq("Dispensing Coffee")
     end
 
   end
