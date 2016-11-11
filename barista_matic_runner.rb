@@ -9,8 +9,14 @@ puts barista_matic.print_menu
 user_input = gets.chomp
 
 while user_input.downcase != "q"
+
   drink = barista_matic.drink_recipe(user_input.to_i)
-  if drink.class == String
+
+  if user_input == "r"
+   barista_matic.restock
+   puts barista_matic.print_inventory
+   puts barista_matic.print_menu
+  elsif drink.class == String
     puts drink
     puts barista_matic.print_inventory
     puts barista_matic.print_menu

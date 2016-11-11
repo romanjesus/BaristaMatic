@@ -96,4 +96,4 @@ class BaristaMatic
   def out_of_stock(drink_num)
       return "Out of Stock: #{drink_recipe(drink_num).name} "
     end
-  end
+end
