@@ -44,4 +44,12 @@ describe BaristaMatic do
 
   end
 
+  describe "print menu method successfully prints menu" do
+    it "prints menu as a string" do
+      barista_matic.print_menu
+      expect(barista_matic.print_menu).to be_instance_of(String)
+    end
+
+  end
+
 end
