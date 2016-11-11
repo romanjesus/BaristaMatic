@@ -1,4 +1,4 @@
-require_relative "../models/coffee"
+Dir["../models/*.rb"].each {|file| require file }
 
 class BaristaMatic
   attr_accessor :inventory, :menu
