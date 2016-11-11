@@ -22,19 +22,19 @@ class BaristaMatic
       {"Decaf Coffee" => "$2.75"}]
   end
 
-  def drink_recipe(order_num)
-    if order_num == 1
+  def drink_recipe(drink_num)
+    if drink_num == 1
       return CaffeAmericano.new
-      # response = "Dispensing #{self.menu[order_num -1].keys[0]}"
-    elsif order_num == 2
+      # response = "Dispensing #{self.menu[drink_num -1].keys[0]}"
+    elsif drink_num == 2
       return CaffeLatte.new
-    elsif order_num == 3
+    elsif drink_num == 3
       return CaffeMocha.new
-    elsif order_num == 4
+    elsif drink_num == 4
       return Cappucino.new
-    elsif order_num == 5
+    elsif drink_num == 5
       return Coffee.new
-    elsif order_num == 6
+    elsif drink_num == 6
       return DecafCoffee.new
     else
       return response = "Invalid selection: #{order_num}"
@@ -52,6 +52,7 @@ class BaristaMatic
         break
       end
     end
+
     possible
   end
 
@@ -61,16 +62,29 @@ class BaristaMatic
     self.inventory.each do |ingredient, quantity|
       inventory_string += "#{ingredient}, #{quantity}\n"
     end
+
     inventory_string
   end
 
   def print_menu
     menu_string = "Menu:\n"
-    order_num = 1
+    drink_num = 1
+
     self.menu.each do |drink|
-      menu_string += "#{order_num}, #{drink.keys[0]},#{drink.values[0]}, #{check_inventory(order_num)}\n"
-      order_num += 1
+      menu_string += "#{drink_num}, #{drink.keys[0]},#{drink.values[0]}, #{check_inventory(drink_num)}\n"
+      drink_num += 1
     end
+    
     menu_string
+  end
+
+  def make_drink(drink_num)
+    drink = drink_recipe(drink_num)
+
+    drink.ingredients.each do |ingredient_name, quantity|
+      self.inventory[ingredient_name] = (self.inventory[ingredient_name] - quantity)
+    end
+
+    return "Dispensing #{drink.name}"
   end
 end
