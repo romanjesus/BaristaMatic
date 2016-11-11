@@ -12,7 +12,13 @@ describe BaristaMatic do
 
   describe "Menu loaded upon initialization" do
     it "has a menu variable" do
-      initial_menu = [{"Caffe Americano" => "$3.30"}, {"Caffe Latte" => "$2.55"}, {"Caffe Mocha" => "$3.35"}, {"Cappucino" => "$2.90"}, {"Coffee" => "$2.75"}, {"Decaf Coffee" => "$2.75"}]
+      initial_menu = [
+        {1 => "Caffe Americano"},
+        {2 => "Caffe Latte"},
+        {3 => "Caffe Mocha"},
+        {4 => "Cappucino"},
+        {5 => "Coffee"},
+        {6 => "Decaf Coffee"}]
 
       expect(barista_matic.menu).to eq(initial_menu)
     end
