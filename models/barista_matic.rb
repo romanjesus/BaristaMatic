@@ -87,4 +87,10 @@ class BaristaMatic
 
     return "Dispensing: #{drink.name}"
   end
+
+  def restock
+    self.inventory.each do |ingredient_name, quantity|
+      self.inventory[ingredient_name] = 10
+    end
+  end
 end
