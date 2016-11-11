@@ -27,6 +27,14 @@ describe BaristaMatic do
       expect(barista_matic.make_drink(999)).to eq("Invalid selection: 999")
     end
 
+    it "Returns false if not enough ingredients" do
+      barista_matic.inventory["Coffee"] = 0
+      coffee = Coffee.new
+
+      expect(barista_matic.check_inventory(coffee)).to eq (false)
+
+    end
+
   end
 
   end
