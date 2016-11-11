@@ -52,7 +52,16 @@ describe BaristaMatic do
 
   describe "Can successfully make drinks and subtract from inventory" do
     it "Can dispense a drink order" do
-      expect(barista_matic.make_drink(5)).to eq("Dispensing Coffee")
+      expect(barista_matic.make_drink(5)).to eq("Dispensing: Coffee")
+    end
+  end
+
+  describe "Can restock inventory back to 10" do
+    it "Restock method returns inventory to 10" do
+      barista_matic.inventory["Coffee"] = 2
+      expect(barista_matic.inventory["Coffee"]).to eq(2)
+      barista_matic.restock
+      expect(barista_matic.inventory["Coffee"]).to eq(10)
     end
 
   end
