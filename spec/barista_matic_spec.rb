@@ -9,6 +9,7 @@ describe BaristaMatic do
       initial_inventory = { "Cocoa" => 10, "Coffee" => 10, "Cream" => 10, "Decaf Coffee" => 10, "Espresso" => 10, "Foamed Milk" => 10, "Steamed Milk" => 10, "Sugar" => 10, "Whipped Cream" => 10 }
       expect(barista_matic.inventory).to eq(initial_inventory)
     end
+  end
 
   describe "Menu loaded upon initialization" do
     it "has a menu variable" do
@@ -29,12 +30,18 @@ describe BaristaMatic do
 
     it "Returns false if not enough ingredients" do
       barista_matic.inventory["Coffee"] = 0
-      
+
       expect(barista_matic.check_inventory(5)).to eq (false)
 
+    end
+  end
+
+  describe "print inventory method successfully prints inventory" do
+
+    it "prints inventory as string" do
+      expect(barista_matic.print_inventory).to be_instance_of(String)
     end
 
   end
 
-  end
 end

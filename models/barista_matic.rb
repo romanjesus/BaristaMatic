@@ -25,7 +25,6 @@ class BaristaMatic
   #This will find and return the drink which has it's recipe so it can be checked against the inventory. Theoretically, drink does not actually get made until inventory is used
 
   def drink_recipe(order_num)
-
     if order_num == 1
       return CaffeAmericano.new
       # response = "Dispensing #{self.menu[order_num -1].keys[0]}"
@@ -46,7 +45,7 @@ class BaristaMatic
 
   def check_inventory(drink_num)
     possible = false
-    
+
     drink_recipe(drink_num).ingredients.each do |ingredient_name, quantity|
       if self.inventory[ingredient_name] - quantity >= 0
         possible = true
@@ -57,4 +56,14 @@ class BaristaMatic
     end
     possible
   end
+
+  def print_inventory
+    inventory_string = "Inventory:\n"
+
+    self.inventory.each do |ingredient, quantity|
+      inventory_string += "#{ingredient}, #{quantity}\n"
+    end
+    inventory_string
+  end
+
 end
