@@ -20,11 +20,11 @@ describe BaristaMatic do
 
   describe "Can make a coffee if inventory permits" do
     it "Can create a coffee successfully" do
-      expect(barista_matic.make_drink(5)).to eq("Dispensing Coffee")
+      expect(barista_matic.drink_recipe(5)).to be_instance_of(Coffee)
     end
 
     it "Error is returned if an invalid selection is entered" do
-      expect(barista_matic.make_drink(999)).to eq("Invalid selection: 999")
+      expect(barista_matic.drink_recipe(999)).to eq("Invalid selection: 999")
     end
 
     it "Returns false if not enough ingredients" do
