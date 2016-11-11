@@ -5,7 +5,7 @@ class BaristaMatic
     @menu = [{"Caffe Americano" => "$3.30"}, {"Caffe Latte" => "$2.55"}, {"Caffe Mocha" => "$3.35"}, {"Cappucino" => "$2.90"}, {"Coffee" => "$2.75"}, {"Decaf Coffee" => "$2.75"}]
   end
 
-  def make_drink(order)
+  def make_drink(order_num)
     #code
   end
 
