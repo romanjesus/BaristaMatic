@@ -1,7 +1,7 @@
 Dir["./models/*.rb"].each {|file| require file }
 
 class BaristaMatic
-  attr_accessor :inventory, :menu
+  attr_accessor :inventory, :menu, :ingredient_costs
   def initialize
     @inventory = {
       "Cocoa" => 10,
@@ -14,12 +14,22 @@ class BaristaMatic
       "Sugar" => 10,
       "Whipped Cream" => 10 }
     @menu = [
-      {"Caffe Americano" => "$3.30"},
-      {"Caffe Latte" => "$2.55"},
-      {"Caffe Mocha" => "$3.35"},
-      {"Cappucino" => "$2.90"},
-      {"Coffee" => "$2.75"},
-      {"Decaf Coffee" => "$2.75"}]
+      {1 => "Caffe Americano"},
+      {2 => "Caffe Latte"},
+      {3 => "Caffe Mocha"},
+      {4 => "Cappucino"},
+      {5 => "Coffee"},
+      {6 => "Decaf Coffee"}]
+    @ingredient_costs =
+      {"Cocoa" => .90,
+      "Coffee" => .75,
+      "Cream" => .25,
+      "Decaf Coffee" => .75,
+      "Espresso" => 1.10,
+      "Foamed Milk" => .35,
+      "Steamed Milk" => .35,
+      "Sugar" => .25,
+      "Whipped Cream" => 1.00}
   end
 
   def drink_recipe(drink_num)
