@@ -21,14 +21,14 @@ class BaristaMatic
       {5 => "Coffee"},
       {6 => "Decaf Coffee"}]
     @ingredient_costs =
-      {"Cocoa" => .90,
-      "Coffee" => .75,
-      "Cream" => .25,
-      "Decaf Coffee" => .75,
+      {"Cocoa" => 0.90,
+      "Coffee" => 0.75,
+      "Cream" => 0.25,
+      "Decaf Coffee" => 0.75,
       "Espresso" => 1.10,
-      "Foamed Milk" => .35,
-      "Steamed Milk" => .35,
-      "Sugar" => .25,
+      "Foamed Milk" => 0.35,
+      "Steamed Milk" => 0.35,
+      "Sugar" => 0.25,
       "Whipped Cream" => 1.00}
   end
 
@@ -65,6 +65,16 @@ class BaristaMatic
     possible
   end
 
+  def drink_cost(drink_num)
+    cost = 0
+
+    drink_recipe(drink_num).ingredients.each do |ingredient_name, quantity|
+      cost += self.ingredient_costs[ingredient_name] * quantity
+    end
+
+    return cost
+  end
+
   def print_inventory
     inventory_string = "Inventory:\n"
 
@@ -77,11 +87,9 @@ class BaristaMatic
 
   def print_menu
     menu_string = "Menu:\n"
-    drink_num = 1
 
-    self.menu.each do |drink|
-      menu_string += "#{drink_num}, #{drink.keys[0]},#{drink.values[0]}, #{check_inventory(drink_num)}\n"
-      drink_num += 1
+    self.menu.each do |menu_item|
+      menu_string += "#{menu_item.keys[0]}, #{menu_item.values[0]}, $#{sprintf("%.2f",drink_cost(menu_item.keys[0]))}, #{check_inventory(menu_item.keys[0])}\n"
     end
 
     menu_string
