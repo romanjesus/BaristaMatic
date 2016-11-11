@@ -66,4 +66,13 @@ class BaristaMatic
     inventory_string
   end
 
+  def print_menu
+    menu_string = "Menu:\n"
+    order_num = 1
+    self.menu.each do |drink, price|
+      menu_string += "#{order_num}, #{drink},#{price}, #{check_inventory(order_num)}"
+      order_num += 1
+    end
+    menu_string 
+  end
 end
