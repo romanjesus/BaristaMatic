@@ -25,7 +25,6 @@ class BaristaMatic
   def drink_recipe(drink_num)
     if drink_num == 1
       return CaffeAmericano.new
-      # response = "Dispensing #{self.menu[drink_num -1].keys[0]}"
     elsif drink_num == 2
       return CaffeLatte.new
     elsif drink_num == 3
