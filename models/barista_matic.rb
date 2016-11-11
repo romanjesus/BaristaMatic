@@ -22,8 +22,6 @@ class BaristaMatic
       {"Decaf Coffee" => "$2.75"}]
   end
 
-  #This will find and return the drink which has it's recipe so it can be checked against the inventory. Theoretically, drink does not actually get made until inventory is used
-
   def drink_recipe(order_num)
     if order_num == 1
       return CaffeAmericano.new
@@ -69,10 +67,10 @@ class BaristaMatic
   def print_menu
     menu_string = "Menu:\n"
     order_num = 1
-    self.menu.each do |drink, price|
-      menu_string += "#{order_num}, #{drink},#{price}, #{check_inventory(order_num)}"
+    self.menu.each do |drink|
+      menu_string += "#{order_num}, #{drink.keys[0]},#{drink.values[0]}, #{check_inventory(order_num)}\n"
       order_num += 1
     end
-    menu_string 
+    menu_string
   end
 end
