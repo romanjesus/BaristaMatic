@@ -24,6 +24,23 @@ describe BaristaMatic do
     end
   end
 
+  describe "Ingredient costs loaded upon initialization" do
+    it "has an ingredient costs variable" do
+      ingredient_costs =
+        {"Cocoa" => 0.90,
+        "Coffee" => 0.75,
+        "Cream" => 0.25,
+        "Decaf Coffee" => 0.75,
+        "Espresso" => 1.10,
+        "Foamed Milk" => 0.35,
+        "Steamed Milk" => 0.35,
+        "Sugar" => 0.25,
+        "Whipped Cream" => 1.00}
+
+      expect(barista_matic.ingredient_costs).to eq(ingredient_costs)
+    end
+  end
+
   describe "Can make a coffee if inventory permits" do
     it "Can create a coffee successfully" do
       expect(barista_matic.drink_recipe(5)).to be_instance_of(Coffee)
@@ -38,6 +55,17 @@ describe BaristaMatic do
 
       expect(barista_matic.check_inventory(5)).to eq (false)
 
+    end
+
+    it "Returns true if enough ingredients" do
+      expect(barista_matic.check_inventory(5)).to eq (true)
+    end
+  end
+
+
+  describe "Calculates drink costs accurately" do
+    it "Returns drink cost as float" do
+      expect(barista_matic.drink_cost(2)).to be_instance_of(Float)
     end
   end
 
@@ -69,7 +97,13 @@ describe BaristaMatic do
       barista_matic.restock
       expect(barista_matic.inventory["Coffee"]).to eq(10)
     end
+  end
 
+  describe "Returns out of stock plus drink name" do
+    it "Returns out of stock" do
+      barista_matic.inventory["Coffee"] = 0
+      expect(barista_matic.out_of_stock(1)).to eq("Out of Stock: Caffe Americano")
+    end
   end
 
 end
